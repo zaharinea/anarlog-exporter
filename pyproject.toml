@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "anarlog-exporter"
+version = "0.1.0"
+description = "Export anarlog (hyprnote fork) meeting transcripts and notes to Markdown."
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [{ name = "Evgenii Zakharin" }]
+license = { text = "MIT" }
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/zaharinea/anarlog-exporter"
+Repository = "https://github.com/zaharinea/anarlog-exporter"
+Issues = "https://github.com/zaharinea/anarlog-exporter/issues"
+
+[project.scripts]
+anarlog-exporter = "anarlog_exporter.cli:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/anarlog_exporter"]
