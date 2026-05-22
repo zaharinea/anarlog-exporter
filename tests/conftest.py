@@ -19,6 +19,8 @@ def make_session(tmp_path: Path):
         memo: str | None = "Главное:\n- решили запустить.",
         extra_notes: list[tuple[str, int, str]] | None = None,
         transcript_words: list[dict] | None = None,
+        summary: str | None = "## Summary\nWe agreed to ship.",
+        summary_filename: str = "_summary.md",
     ) -> Path:
         sessions_root = tmp_path / "anarlog" / "sessions"
         sdir = sessions_root / session_id
@@ -31,6 +33,8 @@ def make_session(tmp_path: Path):
             (sdir / "_memo.md").write_text(
                 f"---\nid: {session_id}\n---\n\n{memo}\n", encoding="utf-8"
             )
+        if summary is not None:
+            (sdir / summary_filename).write_text(summary, encoding="utf-8")
         for name, position, content in extra_notes or []:
             (sdir / f"{name}.md").write_text(
                 f"---\nposition: {position}\n---\n\n{content}\n", encoding="utf-8"

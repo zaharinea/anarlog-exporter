@@ -70,8 +70,8 @@ def cmd_export(args: argparse.Namespace) -> int:
         cfg, only_session_id=args.session_id, force=args.force, silent_skip=False
     )
     print(
-        f"\nDone: exported={result.exported} updated={result.updated} "
-        f"skipped={result.skipped} failed={result.failed}"
+        f"\nDone: exported={result.exported} skipped={result.skipped} "
+        f"pending={result.pending} failed={result.failed}"
     )
     return 1 if result.failed else 0
 
